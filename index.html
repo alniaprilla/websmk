@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMK Santana 2 Cibatu</title>
+    <style>
+        /* CSS STYLING */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f4f4f4;
+            --text-color: #333;
+            --accent-color: #ffcc00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: var(--primary-color);
+
+
+
+
+
+
+
+            
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            background-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section (Warna Solid Biru) */
+        header.hero {
+            background-color: #004494;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            margin-top: 70px;
+        }
+
+        header.hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header.hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            color: #e0e0e0;
+        }
+
+        /* Section General */
+        section {
+            padding: 80px 5%;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Profil */
+        #profil { background-color: #fff; }
+        .profil-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Jurusan */
+        #jurusan { background-color: var(--secondary-color); }
+        .jurusan-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .jurusan-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: 0.3s;
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .jurusan-card:hover { transform: translateY(-10px); }
+        .jurusan-card h3 { margin-bottom: 15px; color: var(--primary-color); }
+
+        /* Galeri */
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .galeri-item {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            padding-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .img-container {
+            width: 100%;
+            aspect-ratio: 4 / 5; 
+            overflow: hidden;
+        }
+
+        .galeri-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: 0.5s;
+        }
+
+        .galeri-item:hover img { transform: scale(1.05); }
+
+        .galeri-item p {
+            margin-top: 15px;
+            padding: 0 5px;
+            font-size: 1.3rem;       
+            font-weight: 700;        
+            color: #111;             
+            line-height: 1.2;
+        }
+
+        /* PERBAIKAN WARNA SEKSI KONTAK AGAR JELAS DAN PASTI MUNCUL */
+        #kontak {
+            background-color: var(--secondary-color); /* Diganti abu-abu terang agar kontras */
+            text-align: center;
+        }
+
+        .kontak-info p {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: #111; /* Menggunakan warna teks gelap agar pasti terbaca */
+        }
+
+        .sosmed { 
+            margin-top: 40px; 
+        }
+
+        .sosmed a {
+            color: white;
+            background-color: var(--primary-color); /* Tombol biru solid */
+            text-decoration: none;
+            margin: 10px 10px;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .sosmed a:hover {
+            background-color: #004494;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #002d5e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .galeri-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                padding: 20px;
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            header.hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="logosmk.png" alt="Logo" class="logo-img">
+            SMK Santana 2
+        </div>
+        <div class="menu-toggle" id="mobile-menu">☰</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#jurusan">Jurusan</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="beranda">
+        <h1>SMK Santana 2 Cibatu</h1>
+        <p>Mencetak Lulusan yang Kompeten, Berkarakter Industri, dan Unggul dalam Teknologi.</p>
+    </header>
+
+    <section id="profil">
+        <h2>Profil Sekolah</h2>
+        <div class="profil-content">
+            <p>SMK Santana 2 Cibatu adalah sekolah kejuruan yang berdedikasi tinggi dalam mendidik siswa-siswi agar memiliki keahlian profesional. Dengan fasilitas modern dan kurikulum berbasis industri, kami siap mengantarkan siswa menuju dunia kerja maupun wirausaha.</p>
+            <br>
+            <p><strong>Visi:</strong> Mewujudkan lembaga pendidikan yang religius, kompeten, dan mandiri.</p>
+            <p><strong>Misi:</strong> Menyelenggarakan pendidikan teknik dan bisnis yang relevan dengan kebutuhan zaman.</p>
+        </div>
+    </section>
+
+    <section id="jurusan">
+        <h2>Program Keahlian</h2>
+        <div class="jurusan-container">
+            <div class="jurusan-card">
+                <h3>Rekayasa Perangkat Lunak (RPL)</h3>
+                <p>Mempelajari coding, pembuatan aplikasi Android, Website, dan pengelolaan Database berskala industri.</p>
+            </div>
+            <div class="jurusan-card">
+                <h3>Otomatisasi Tata Kelola Perkantoran (OTKP)</h3>
+                <p>Mempelajari administrasi perkantoran modern, manajemen kearsipan digital, dan komunikasi bisnis profesional.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeri">
+        <h2>Galeri Kegiatan</h2>
+        <div class="galeri-grid">
+            
+            <div class="galeri-item">
+                <div class="img-container">
+                    <img src="jumsih.JPEG" alt="Jumat Bersih">
+                </div>
+                <p>Jumat Bersih</p>
+            </div>
+
+            <div class="galeri-item">
+                <div class="img-container">
+                    <img src="marketday.JPEG" alt="Market Day">
+                </div>
+                <p>Market Day</p>
+            </div>
+
+            <div class="galeri-item">
+                <div class="img-container">
+                    <img src="mentalitas.JPEG" alt="Mentalitas Industri">
+                </div>
+                <p>Mentalitas Industri</p>
+            </div>
+
+            <div class="galeri-item">
+                <div class="img-container">
+                    <img src="senam.JPEG" alt="Senam Pagi">
+                </div>
+                <p>Senam Pagi</p>
+            </div>
+
+            <div class="galeri-item">
+                <div class="img-container">
+                    <img src="smartren.JPEG" alt="Smartren Ramadhan">
+                </div>
+                <p>Smartren Ramadhan</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="kontak">
+        <h2>Kontak & Sosial Media</h2>
+        <div class="kontak-info">
+            <p>📍 <strong>Alamat:</strong> Jalan Siliwangi No.92, Keresek, Kecamatan Cibatu, Kabupaten Garut, Jawa Barat</p>
+            <p>📞 <strong>Telepon:</strong> (0262) 467956</p>
+            <p>✉️ <strong>Email:</strong> smk_santana2@yahoo.co.id</p>
+        </div>
+        <div class="sosmed">
+            <a href="https://instagram.com/smksantana2cibatu" target="_blank">Instagram</a>
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://youtube.com" target="_blank">YouTube</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 SMK Santana 2 Cibatu. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
